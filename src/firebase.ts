@@ -12,3 +12,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+import { collection, addDoc } from "firebase/firestore";
+
+// TEST - delete after confirming
+addDoc(collection(db, "test"), { hello: "world", ts: new Date().toISOString() })
+  .then(() => console.log("✅ Firebase write SUCCESS"))
+  .catch((e) => console.error("❌ Firebase write FAILED:", e));
