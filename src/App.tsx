@@ -237,7 +237,7 @@ export default function App() {
 // --- Sub-components remain functionally identical to your original code, now accepting the Firebase update handler ---
 
 function BookTab({ onSubmit, existingBookings, lastSubmission, addToast, tick }: { 
-  onSubmit: (d: Partial<Booking>) => void, 
+  onSubmit: (d: Partial<Booking>) => Promise<void>, 
   existingBookings: Booking[],
   lastSubmission: Booking | null,
   addToast: (msg: string, type: Toast['type']) => void,
