@@ -1,0 +1,160 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Clash Display', 'Outfit', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* LIGHT MODE */
+  --color-primary: #0D3D20;
+  --color-primary-hover: #0A3019;
+  --color-primary-active: #072511;
+  --color-primary-subtle: #EBF5ED;
+  --color-accent: #8DC63F;
+  --color-accent-dark: #6FA52D;
+  --color-accent-glow: rgba(141, 198, 63, 0.15);
+
+  --color-page-bg: #F4F6F0;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FAFAF7;
+  --color-surface-sunken: #EDEEE9;
+  --color-surface-accent: #F0FAF0;
+
+  --color-border-subtle: rgba(15, 35, 20, 0.09);
+  --color-border-strong: rgba(15, 35, 20, 0.18);
+  --color-divider: #DDE0D8;
+
+  --color-text-main: #0E1C14;
+  --color-text-secondary: #2E3D33;
+  --color-text-muted: #607060;
+  --color-text-faint: #9DAD9D;
+
+  --color-success: #16A34A;
+  --color-success-bg: #DCFCE7;
+  --color-success-border: #86EFAC;
+  --color-warning: #B45309;
+  --color-warning-bg: #FEF3C7;
+  --color-warning-border: #FCD34D;
+  --color-error: #DC2626;
+  --color-error-bg: #FEF2F2;
+  --color-error-border: #FECACA;
+
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+  html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+  body {
+    @apply font-body bg-page-bg text-text-main min-h-screen antialiased;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display leading-tight;
+    text-wrap: balance;
+  }
+  p { @apply max-w-[68ch]; text-wrap: pretty; }
+  input, button, select, textarea {
+    font-family: inherit;
+    color: inherit;
+  }
+  button { @apply cursor-pointer border-none bg-none; }
+  
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* Dark Mode Overrides */
+.dark {
+  --color-page-bg: #0A0F0D;
+  --color-surface: #111915;
+  --color-surface-raised: #182119;
+  --color-surface-sunken: #0C1210;
+  --color-surface-accent: #0D2015;
+  --color-border-subtle: rgba(163, 230, 53, 0.07);
+  --color-border-strong: rgba(163, 230, 53, 0.14);
+  --color-divider: #1E2B22;
+  --color-text-main: #E8EDE9;
+  --color-text-secondary: #B8C4BA;
+  --color-text-muted: #718572;
+  --color-text-faint: #3D4D3E;
+  --color-primary: #4A9D6A;
+  --color-primary-hover: #3A8558;
+  --color-primary-active: #2D6E47;
+  --color-primary-subtle: #0D2015;
+  --color-accent: #A3E635;
+  --color-accent-dark: #84CC16;
+  --color-accent-glow: rgba(163, 230, 53, 0.12);
+  --color-warning-bg: #2A1A00;
+  --color-warning-text: #FDE68A;
+}
+
+/* Utility Animations */
+@keyframes slideInFromRight {
+  from { transform: translateX(110%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeAndSlideUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+/* Past Slots */
+.schedule-slot--past {
+  background: var(--color-surface-sunken) !important;
+  opacity: 0.6;
+  cursor: default !important;
+  pointer-events: none;
+  border-color: var(--color-divider) !important;
+}
+
+.schedule-slot--past .slot-time {
+  color: var(--color-text-faint);
+}
+
+.schedule-slot--past .slot-label {
+  color: var(--color-text-faint);
+  font-style: italic;
+}
+
+/* Edit Panel Classes */
+.edit-panel {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.edit-error {
+  color: var(--color-error);
+  font-weight: bold;
+}
