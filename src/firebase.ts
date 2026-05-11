@@ -8,7 +8,6 @@ const firebaseConfig = {
   storageBucket: "ambrosia-pickle-reservation.firebasestorage.app",
   messagingSenderId: "42758142672",
   appId: "1:42758142672:web:0606248cc1eb2621c4fcd5",
-  measurementId: "G-DVQ7T20H85",
 };
 
 const app = initializeApp(firebaseConfig);
