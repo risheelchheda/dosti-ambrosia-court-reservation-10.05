@@ -99,9 +99,7 @@ export default function App() {
     }
   };
 
-  // --- Effects ---
-
-  // Real-time Firestore Sync
+ 
   useEffect(() => {
     const q = query(collection(db, "bookings"), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
