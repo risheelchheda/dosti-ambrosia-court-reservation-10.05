@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
+import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyDiTZZADrop7FP46Y0eU6a1z9hpHdl2kEY",
   authDomain: "ambrosia-pickle-reservation.firebaseapp.com",
@@ -11,6 +10,5 @@ const firebaseConfig = {
   measurementId: "G-DVQ7T20H85"
 };
 
-
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+const analytics = getAnalytics(app);
