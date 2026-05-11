@@ -1,0 +1,14 @@
+[build]
+  # The command to run to build your site
+  command = "npm run build"
+  
+  # The directory that contains the deploy-ready assets after the build
+  publish = "dist"
+
+# This section handles the Single Page Application (SPA) routing.
+# It ensures that when a user refreshes the page on /Schedule or /Rules,
+# Netlify redirects them to index.html so React can handle the route.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
