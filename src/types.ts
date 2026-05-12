@@ -24,9 +24,11 @@ export interface Booking {
   endTime24: string;
   startTimeDisplay: string;
   endTimeDisplay: string;
-  duration: number; // in minutes
+  duration: number;
   hasGuest: boolean;
   paddles: number;
+  playerCount: number;        
+  players: { slot: number; name: string }[]; 
   courtFee: number;
   paddleFee: number;
   totalAmount: number;
