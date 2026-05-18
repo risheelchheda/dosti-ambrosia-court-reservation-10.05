@@ -22,4 +22,4 @@ export const PADDLE_RATE = 25;    // per paddle
 export const ADMIN_PIN = '9876';
 
 export const AUTO_CANCEL_WARNING_MINS = 30;
-export const AUTO_CANCEL_THRESHOLD_MINS = 60;
+export const AUTO_CANCEL_THRESHOLD_MINS =360;

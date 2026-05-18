@@ -391,6 +391,11 @@ function BookTab({ onSubmit, existingBookings, lastSubmission, addToast, tick }:
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const nowHour = new Date().getHours();
+  if (nowHour < 7 || nowHour >= 22) {
+    addToast('Bookings can only be made between 7:00 AM and 10:00 PM.', 'error');
+    return;
+  }
     if (isPastSlot(form.startTime, form.date)) { addToast('This slot is in the past.', 'error'); return; }
     if (!isValid) return;
     const players = form.playerNames.map((name, i) => ({ slot: i + 1, name: name.trim() || (i === 0 ? form.residentName : `Guest ${i + 1}`) }));
@@ -917,7 +922,7 @@ function getAutoCancelTime(createdAtISO: string) {
   const t = new Date(new Date(createdAtISO).getTime() + AUTO_CANCEL_THRESHOLD_MINS * 60 * 1000);
   let h = t.getHours(); const m = t.getMinutes(); const ampm = h >= 12 ? 'PM' : 'AM';
   h = h % 12 || 12;
-  return `Auto-cancels at ${h}:${String(m).padStart(2, '0')} ${ampm}`;
+  return `Auto-cancels in 6 hrs at ${h}:${String(m).padStart(2, '0')} ${ampm}`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
